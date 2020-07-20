@@ -10,7 +10,7 @@ import UIKit
 
 protocol FoodPresenterOutput: class {
     
-    func presenter(didSelectedMenu id: Int)
+    func presenter(didSelectedMenu name: String, price: String)
     
 }
 
@@ -18,26 +18,45 @@ protocol FoodPresenterOutput: class {
 class FoodViewController: UIViewController {
     
     @IBOutlet weak var foodCV: UICollectionView!
+    
+    
     let foodModel = FoodModel()
-    var interactor:FoodInteractor?
-    var router:FoodRouter?
-    
-    
+    var interactor : FoodInteractor?
+    var pickedMenu = FoodModel.init().foodSet[0]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         foodCV.dataSource = self
         foodCV.delegate = self
+        setup()
         interactor?.viewDidLoad()
     }
+    
+    private func setup() {
+        let viewController = self
+        let interactor = FoodInteractorImplementation()
+        let presenter = FoodPresenterImplementation()
+        viewController.interactor = interactor
+        interactor.presenter = presenter
+        presenter.viewController = viewController
+        
+    }
+
 }
 
 //MARK: Presenter Output
 extension FoodViewController: FoodPresenterOutput {
-    
-    func presenter(didSelectedMenu id: Int) {
-        router?.routToAnother(id: id)
+    func presenter(didSelectedMenu name: String, price: String) {
+        performSegue(withIdentifier: "toDestination", sender: self)
+        print("Menu: \(name) Picked, Price: \(price)")
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDestination" {
+            if segue.destination is DeliveryViewController {
+                let vc = segue.destination as? DeliveryViewController
+                vc?.pickedFood = pickedMenu
+            }
+        }
     }
     
     
@@ -59,6 +78,7 @@ extension FoodViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        pickedMenu = foodModel.foodSet[indexPath.row]
         self.interactor?.didSelectMeal(at: indexPath.row)
     }
     

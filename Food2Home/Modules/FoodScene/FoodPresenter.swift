@@ -11,14 +11,16 @@ import Foundation
 
 protocol FoodPresenter: class {
     
-    func interactor(didPickaMenu menuId: Int)
+    func interactor(didPickaMenu menuName: String, menuPrice: String)
     
 }
 class FoodPresenterImplementation: FoodPresenter {
-    var viewController:FoodViewController?
+    weak var viewController : FoodPresenterOutput?
     
-    func interactor(didPickaMenu menuId: Int) {
-        viewController?.presenter(didSelectedMenu: menuId)
+    func interactor(didPickaMenu menuName: String, menuPrice: String){
+        
+        viewController?.presenter(didSelectedMenu: menuName, price: menuPrice)
+        
     }
     
     

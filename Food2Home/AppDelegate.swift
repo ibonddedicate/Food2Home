@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import GoogleMaps
+import GooglePlaces
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,13 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        let foodViewController = FoodViewController()
-        let navigationController = UINavigationController(rootViewController: foodViewController)
-        FoodConfigurator.configureModule(viewController: foodViewController)
-        window = UIWindow()
-        window?.rootViewController = navigationController
-        window?.makeKeyAndVisible()
-        
+        GMSServices.provideAPIKey("AIzaSyCNnCzLG-sPmWdz-gGQDBjyZl7MPpQ7WmI")
+        GMSPlacesClient.provideAPIKey("AIzaSyCNnCzLG-sPmWdz-gGQDBjyZl7MPpQ7WmI")
         return true
     }
 
