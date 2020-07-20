@@ -17,11 +17,14 @@ protocol DeliveryPresenterOutput: class {
 
 class DeliveryViewController: UIViewController {
     
-    @IBOutlet weak var mapFrame: GMSMapView!
+    @IBOutlet weak var confirmOrder: UIButton!
+    @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var pickedMenu: UILabel!
     @IBOutlet weak var pickedMenuPrice: UILabel!
     @IBOutlet weak var deliveryCost: UILabel!
     @IBOutlet weak var locationBox: UITextField!
+    let cord2DRestaurant = CLLocationCoordinate2D(latitude: 13.685125, longitude: 100.611021)
+    let cordRestaurant = CLLocation(latitude: 13.685125, longitude: 100.611021)
     var interactor : DeliveryInteractor?
     var locationManager: CLLocationManager!
     var currentLocation: CLLocation?
@@ -30,15 +33,13 @@ class DeliveryViewController: UIViewController {
     var pickedFood = FoodModel.init().foodSet[0]
     var distanceCost:String?
     let mapService = MapService()
+    let marker = GMSMarker()
+    var ableToOrder = false
 
-    // An array to hold the list of likely places.
-    var likelyPlaces: [GMSPlace] = []
-
-    // The currently selected place.
-    var selectedPlace: GMSPlace?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        mapView.delegate = self
         setup()
         locationManager = CLLocationManager()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -49,10 +50,6 @@ class DeliveryViewController: UIViewController {
         pickedMenu.text = pickedFood.foodName
         pickedMenuPrice.text = "\(String(pickedFood.foodPrice)) THB"
         placesClient = GMSPlacesClient.shared()
-    
-        mapFrame.settings.myLocationButton = true
-        mapFrame.isMyLocationEnabled = true
-
 
     }
     @IBAction func searchTapped(_ sender: Any) {
@@ -70,23 +67,27 @@ class DeliveryViewController: UIViewController {
 
 }
 
-extension DeliveryViewController : GMSAutocompleteViewControllerDelegate {
+extension DeliveryViewController : GMSAutocompleteViewControllerDelegate, GMSMapViewDelegate {
+    func createMarker(titleMarker: String, loc: CLLocationCoordinate2D) {
+     let marker = GMSMarker()
+     marker.position = loc
+     marker.isDraggable = true
+     marker.title = titleMarker
+     marker.map = mapView
+    }
     
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         print("Place name: \(String(describing: place.name))")
         dismiss(animated: true, completion: nil)
         
-        self.mapFrame.clear()
+        self.mapView.clear()
         self.locationBox.text = place.name
         
         let cord2D = CLLocationCoordinate2D(latitude: (place.coordinate.latitude), longitude: (place.coordinate.longitude))
-        let cord2DRestaurant = CLLocationCoordinate2D(latitude: 13.685125, longitude: 100.611021)
-        let cordRestaurant = CLLocation(latitude: 13.685125, longitude: 100.611021)
         let cordUser = CLLocation(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
         let distance = cordUser.distance(from: cordRestaurant)
         mapService.requestPath(userLoc: cord2D){
             let routes = MapService.routes
-            print(MapService.routes!)
             if routes != nil {
                 for route in routes! {
                     let routeOverviewPolyline = route["overview_polyline"].dictionary
@@ -94,30 +95,77 @@ extension DeliveryViewController : GMSAutocompleteViewControllerDelegate {
                     let path = GMSPath.init(fromEncodedPath: points!)
                     let polyline = GMSPolyline.init(path: path)
                     polyline.strokeColor = UIColor.systemBlue
-                    polyline.strokeWidth = 4
-                    polyline.map = self.mapFrame
+                    polyline.strokeWidth = 5
+                    polyline.map = self.mapView
                 }
             }
         }
         interactor?.calculateDeliveryCost(dist: Float(distance))
         
 
-        
-        let cusMarker = GMSMarker()
-        cusMarker.position =  cord2D
-        cusMarker.title = place.name
-        cusMarker.snippet = "Food Pickup Location"
-        cusMarker.map = self.mapFrame
+        createMarker(titleMarker: place.name!, loc: cord2D)
         
         let resMarker = GMSMarker()
         resMarker.position = cord2DRestaurant
         resMarker.title = "True Digital Park"
         resMarker.snippet = "Food2Home Restaurant"
         resMarker.icon = UIImage(named: "location.png")
-        resMarker.map = self.mapFrame
+        resMarker.map = self.mapView
         
-        self.mapFrame.camera = GMSCameraPosition.camera(withTarget: cord2D, zoom: 15)
+        self.mapView.camera = GMSCameraPosition.camera(withTarget: cord2D, zoom: 15)
     }
+    
+    //MARK: Marker methods
+    func mapView(_ mapView: GMSMapView, didEndDragging marker: GMSMarker) {
+        print("Position of marker is = \(marker.position.latitude),\(marker.position.longitude)")
+        self.mapView.clear()
+        mapService.requestPath(userLoc: marker.position) {
+            let routes = MapService.routes
+             if routes != nil {
+                 for route in routes! {
+                     let routeOverviewPolyline = route["overview_polyline"].dictionary
+                     let points = routeOverviewPolyline?["points"]?.stringValue
+                     let path = GMSPath.init(fromEncodedPath: points!)
+                     let polyline = GMSPolyline.init(path: path)
+                     polyline.strokeColor = UIColor.systemBlue
+                     polyline.strokeWidth = 5
+                     polyline.map = self.mapView
+                 }
+             }
+        }
+        let cordUser = CLLocation(latitude: marker.position.latitude, longitude: marker.position.longitude)
+        let distance = cordUser.distance(from: cordRestaurant)
+        interactor?.calculateDeliveryCost(dist: Float(distance))
+        reverseGeocoding(marker: marker)
+        
+        let resMarker = GMSMarker()
+        resMarker.position = cord2DRestaurant
+        resMarker.title = "True Digital Park"
+        resMarker.snippet = "Food2Home Restaurant"
+        resMarker.icon = UIImage(named: "location.png")
+        resMarker.map = self.mapView
+        
+    }
+    //MARK: Reverse GeoCoding
+    
+    func reverseGeocoding(marker: GMSMarker) {
+        let geocoder = GMSGeocoder()
+        let coordinate = CLLocationCoordinate2DMake(Double(marker.position.latitude),Double(marker.position.longitude))
+        
+        var currentAddress = String()
+        
+        geocoder.reverseGeocodeCoordinate(coordinate) { response , error in
+            if let address = response?.firstResult() {
+                let lines = address.lines! as [String]
+                
+                currentAddress = lines.joined(separator: "\n")
+                
+            }
+            self.locationBox.text = currentAddress
+            marker.map = self.mapView
+        }
+    }
+    
     
     func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
         print(error.localizedDescription)
@@ -141,15 +189,25 @@ extension DeliveryViewController : DeliveryPresenterOutput {
     func updateDeliveryCost(cost: Double) {
         distanceCost = String(cost.rounded(.up))
         DispatchQueue.main.async {
+            self.confirmOrder.backgroundColor = UIColor.systemRed
             if cost <= 15.00 {
                 self.deliveryCost.text = "FREE DELIVERY"
                 self.deliveryCost.textColor = UIColor.systemGreen
+                self.ableToOrder = true
+                self.confirmOrder.setTitle("ConfirmOrder (Total: \(self.pickedFood.foodPrice) THB)", for: .normal)
             } else if cost >= 1000.00{
                 self.deliveryCost.text = "NO DELIVERY SERVICE"
                 self.deliveryCost.textColor = UIColor.red
+                self.ableToOrder = false
+                self.confirmOrder.backgroundColor = UIColor.lightGray
+                self.confirmOrder.setTitle("Delivery Not Available", for: .normal)
             } else {
-                self.deliveryCost.text = "+\(self.distanceCost!) THB"
-                self.deliveryCost.textColor = UIColor.systemGreen
+                self.deliveryCost.text = "Delivery : \(self.distanceCost!) THB"
+                self.deliveryCost.textColor = UIColor.lightGray
+                self.ableToOrder = true
+                let distanceCostnonOp = Double(self.distanceCost!)!
+                let total = distanceCostnonOp + Double(self.pickedFood.foodPrice)
+                self.confirmOrder.setTitle("ConfirmOrder (Total: \(total.rounded()) THB)", for: .normal)
             }
         }
         
@@ -167,13 +225,7 @@ extension DeliveryViewController: CLLocationManagerDelegate {
     let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,
                                           longitude: location.coordinate.longitude,
                                           zoom: zoomLevel)
-
-    if mapFrame.isHidden {
-      mapFrame.isHidden = false
-      mapFrame.camera = camera
-    } else {
-      mapFrame.animate(to: camera)
-    }
+    mapView.camera = camera
   }
 
   // Handle authorization for the location manager.
@@ -184,7 +236,6 @@ extension DeliveryViewController: CLLocationManagerDelegate {
     case .denied:
       print("User denied access to location.")
       // Display the map using the default location.
-      mapFrame.isHidden = false
     case .notDetermined:
       print("Location status not determined.")
     case .authorizedAlways: fallthrough

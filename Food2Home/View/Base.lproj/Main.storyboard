@@ -19,10 +19,10 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LSi-uL-Fmy">
                                 <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                                 <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="o2B-2r-2y2">
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="o2B-2r-2y2">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="8TY-k7-C2H">
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="8TY-k7-C2H">
                                             <size key="itemSize" width="375" height="250"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -36,7 +36,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8xw-gy-xFx">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8xw-gy-xFx">
                                                             <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MealName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JT0-8b-KdZ">
@@ -90,7 +90,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Pick a Menu" id="aM4-Jf-tvg">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="UCA-yT-r0N"/>
+                        <barButtonItem key="backBarButtonItem" title="Menu" id="UCA-yT-r0N"/>
                     </navigationItem>
                     <connections>
                         <outlet property="foodCV" destination="o2B-2r-2y2" id="GQj-FV-92P"/>
@@ -110,7 +110,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="OMg-fU-knd">
-                                <rect key="frame" x="0.0" y="44" width="375" height="405.5"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                                 <subviews>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xMO-1D-x5S" customClass="GMSMapView">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
@@ -124,28 +124,70 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="aXn-7F-uqn"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="25"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-------------------------------------------" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j58-3u-HPH">
+                                        <rect key="frame" x="0.0" y="350" width="375" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="rMi-rX-UlF"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="16"/>
+                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Picked Menu.." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6xR-xR-70I">
-                                        <rect key="frame" x="0.0" y="350" width="375" height="21.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <rect key="frame" x="0.0" y="380" width="375" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="2us-7c-EfE"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu Price..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iDf-Ss-fbT">
-                                        <rect key="frame" x="0.0" y="371.5" width="375" height="17"/>
+                                        <rect key="frame" x="0.0" y="410" width="375" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="gVQ-fe-zd9"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick a Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FlW-sl-Lfc">
-                                        <rect key="frame" x="0.0" y="388.5" width="375" height="17"/>
+                                        <rect key="frame" x="0.0" y="435" width="375" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="LRU-Vx-ITy"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-------------------------------------------" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vq4-WO-k38">
+                                        <rect key="frame" x="0.0" y="460" width="375" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="jrN-GG-ppQ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="16"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MZV-QU-BvY" userLabel="spacer">
+                                        <rect key="frame" x="0.0" y="490" width="375" height="63"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="jWd-Mg-pWd">
+                                        <rect key="frame" x="0.0" y="553" width="375" height="70"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="2hH-CZ-lb1"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <state key="normal" title="Confirm Order">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
                                 </subviews>
                             </stackView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type Location..." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bUG-bT-IpA">
@@ -166,6 +208,7 @@
                             <constraint firstItem="bUG-bT-IpA" firstAttribute="top" secondItem="OuU-f3-fa7" secondAttribute="top" constant="10" id="3EK-Nd-MJi"/>
                             <constraint firstItem="jdl-To-OrZ" firstAttribute="bottom" secondItem="bUG-bT-IpA" secondAttribute="bottom" id="6WL-2K-36a"/>
                             <constraint firstItem="OuU-f3-fa7" firstAttribute="trailing" secondItem="bUG-bT-IpA" secondAttribute="trailing" constant="15" id="AeZ-Ou-h7r"/>
+                            <constraint firstItem="OuU-f3-fa7" firstAttribute="bottom" secondItem="OMg-fU-knd" secondAttribute="bottom" id="M80-ox-hBt"/>
                             <constraint firstItem="jdl-To-OrZ" firstAttribute="leading" secondItem="bUG-bT-IpA" secondAttribute="leading" id="WkP-cD-3r8"/>
                             <constraint firstItem="OMg-fU-knd" firstAttribute="top" secondItem="OuU-f3-fa7" secondAttribute="top" id="a41-le-bvv"/>
                             <constraint firstItem="bUG-bT-IpA" firstAttribute="leading" secondItem="OuU-f3-fa7" secondAttribute="leading" constant="15" id="aAc-8s-Acd"/>
@@ -178,9 +221,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="Destination" id="KK5-uF-s8h"/>
                     <connections>
+                        <outlet property="confirmOrder" destination="jWd-Mg-pWd" id="QaF-Ug-qyn"/>
                         <outlet property="deliveryCost" destination="FlW-sl-Lfc" id="a9E-gy-lxh"/>
                         <outlet property="locationBox" destination="bUG-bT-IpA" id="72G-Ik-fUI"/>
-                        <outlet property="mapFrame" destination="xMO-1D-x5S" id="tsT-gs-R18"/>
+                        <outlet property="mapView" destination="xMO-1D-x5S" id="tsT-gs-R18"/>
                         <outlet property="pickedMenu" destination="6xR-xR-70I" id="4EK-4T-TM1"/>
                         <outlet property="pickedMenuPrice" destination="iDf-Ss-fbT" id="Vmf-n6-oCf"/>
                     </connections>
@@ -198,6 +242,11 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9v8-zy-rk6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

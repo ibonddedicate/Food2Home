@@ -14,8 +14,8 @@
             filePath = "Food2Home/Modules/DeliveryScene/DeliveryViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "190"
+            endingLineNumber = "190"
             landmarkName = "updateDeliveryCost(cost:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -24,7 +24,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "4A4CD28C-02E5-4E0D-8A88-1C8693988875"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Food2Home/Services/MapService.swift"
