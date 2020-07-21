@@ -23,8 +23,8 @@ class DeliveryViewController: UIViewController {
     @IBOutlet weak var pickedMenuPrice: UILabel!
     @IBOutlet weak var deliveryCost: UILabel!
     @IBOutlet weak var locationBox: UITextField!
-    let cord2DRestaurant = CLLocationCoordinate2D(latitude: 13.685125, longitude: 100.611021)
-    let cordRestaurant = CLLocation(latitude: 13.685125, longitude: 100.611021)
+    var cord2DRestaurant = CLLocationCoordinate2D(latitude: 13.685125, longitude: 100.611021)
+    var cordRestaurant = CLLocation(latitude: 13.685125, longitude: 100.611021)
     var interactor : DeliveryInteractor?
     var locationManager: CLLocationManager!
     var currentLocation: CLLocation?
@@ -50,6 +50,9 @@ class DeliveryViewController: UIViewController {
         pickedMenu.text = pickedFood.foodName
         pickedMenuPrice.text = "\(String(pickedFood.foodPrice)) THB"
         placesClient = GMSPlacesClient.shared()
+        setRestaurantLocation()
+        createRestaurantMarker(loc: cord2DRestaurant)
+        mapView.camera = GMSCameraPosition.camera(withTarget: cord2DRestaurant, zoom: 15)
 
     }
     @IBAction func searchTapped(_ sender: Any) {
@@ -69,11 +72,25 @@ class DeliveryViewController: UIViewController {
 
 extension DeliveryViewController : GMSAutocompleteViewControllerDelegate, GMSMapViewDelegate {
     func createMarker(titleMarker: String, loc: CLLocationCoordinate2D) {
-     let marker = GMSMarker()
-     marker.position = loc
-     marker.isDraggable = true
-     marker.title = titleMarker
-     marker.map = mapView
+        let marker = GMSMarker()
+        marker.position = loc
+        marker.isDraggable = true
+        marker.title = titleMarker
+        marker.map = mapView
+    }
+    
+    func createRestaurantMarker(loc: CLLocationCoordinate2D) {
+        let resMarker = GMSMarker()
+        resMarker.position = cord2DRestaurant
+        resMarker.title = "\(pickedFood.foodName) Restaurant"
+        resMarker.snippet = "by Food2Home"
+        resMarker.icon = UIImage(named: "location.png")
+        resMarker.map = self.mapView
+    }
+    
+    func setRestaurantLocation() {
+        cord2DRestaurant = pickedFood.foodLocation
+        cordRestaurant = CLLocation(latitude: pickedFood.foodLocation.latitude, longitude: pickedFood.foodLocation.longitude)
     }
     
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
@@ -86,7 +103,7 @@ extension DeliveryViewController : GMSAutocompleteViewControllerDelegate, GMSMap
         let cord2D = CLLocationCoordinate2D(latitude: (place.coordinate.latitude), longitude: (place.coordinate.longitude))
         let cordUser = CLLocation(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
         let distance = cordUser.distance(from: cordRestaurant)
-        mapService.requestPath(userLoc: cord2D){
+        mapService.requestPath(userLoc: cord2D, restLoc: cord2DRestaurant){
             let routes = MapService.routes
             if routes != nil {
                 for route in routes! {
@@ -104,13 +121,8 @@ extension DeliveryViewController : GMSAutocompleteViewControllerDelegate, GMSMap
         
 
         createMarker(titleMarker: place.name!, loc: cord2D)
-        
-        let resMarker = GMSMarker()
-        resMarker.position = cord2DRestaurant
-        resMarker.title = "True Digital Park"
-        resMarker.snippet = "Food2Home Restaurant"
-        resMarker.icon = UIImage(named: "location.png")
-        resMarker.map = self.mapView
+        createRestaurantMarker(loc: cord2DRestaurant)
+//
         
         self.mapView.camera = GMSCameraPosition.camera(withTarget: cord2D, zoom: 15)
     }
@@ -119,7 +131,7 @@ extension DeliveryViewController : GMSAutocompleteViewControllerDelegate, GMSMap
     func mapView(_ mapView: GMSMapView, didEndDragging marker: GMSMarker) {
         print("Position of marker is = \(marker.position.latitude),\(marker.position.longitude)")
         self.mapView.clear()
-        mapService.requestPath(userLoc: marker.position) {
+        mapService.requestPath(userLoc: marker.position, restLoc: cord2DRestaurant) {
             let routes = MapService.routes
              if routes != nil {
                  for route in routes! {
@@ -137,13 +149,7 @@ extension DeliveryViewController : GMSAutocompleteViewControllerDelegate, GMSMap
         let distance = cordUser.distance(from: cordRestaurant)
         interactor?.calculateDeliveryCost(dist: Float(distance))
         reverseGeocoding(marker: marker)
-        
-        let resMarker = GMSMarker()
-        resMarker.position = cord2DRestaurant
-        resMarker.title = "True Digital Park"
-        resMarker.snippet = "Food2Home Restaurant"
-        resMarker.icon = UIImage(named: "location.png")
-        resMarker.map = self.mapView
+        createRestaurantMarker(loc: cord2DRestaurant)
         
     }
     //MARK: Reverse GeoCoding
@@ -222,10 +228,10 @@ extension DeliveryViewController: CLLocationManagerDelegate {
     let location: CLLocation = locations.last!
     print("Location: \(location)")
 
-    let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,
-                                          longitude: location.coordinate.longitude,
-                                          zoom: zoomLevel)
-    mapView.camera = camera
+    //let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,
+     //                                     longitude: location.coordinate.longitude,
+     //                                     zoom: zoomLevel)
+    //mapView.camera = camera
   }
 
   // Handle authorization for the location manager.

@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreLocation
 
 //MARK: Food Related Model
 
@@ -15,10 +16,12 @@ class FoodModels {
     var foodName: String
     var foodPrice: Float
     var foodImage: UIImage
+    var foodLocation: CLLocationCoordinate2D
     
-    init(food: String, price: Float, image: UIImage) {
+    init(food: String, price: Float, image: UIImage, loc: CLLocationCoordinate2D) {
         foodName = food
         foodPrice = price
         foodImage = image
+        foodLocation = loc
     }
 }
