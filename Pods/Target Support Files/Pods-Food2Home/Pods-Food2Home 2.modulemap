@@ -1,0 +1,6 @@
+framework module Pods_Food2Home {
+  umbrella header "Pods-Food2Home-umbrella.h"
+
+  export *
+  module * { export * }
+}

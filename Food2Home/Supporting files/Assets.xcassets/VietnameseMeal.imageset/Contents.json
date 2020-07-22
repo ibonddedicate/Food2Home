@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "Chao_Village_Photo_1_Enhanced.jpg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "Chao_Village_Photo_1_Enhanced-1.jpg",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "Chao_Village_Photo_1_Enhanced-2.jpg",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

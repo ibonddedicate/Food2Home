@@ -37,6 +37,7 @@
 		752F35B424C7D686003983D4 /* OrderedInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedInteractor.swift; sourceTree = "<group>"; };
 		752F35B624C7D693003983D4 /* OrderedPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedPresenter.swift; sourceTree = "<group>"; };
 		752F35B824C7ED9F003983D4 /* OrderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderService.swift; sourceTree = "<group>"; };
+		7545D55624C83A2F00B4E398 /* Food2Home.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Food2Home.entitlements; sourceTree = "<group>"; };
 		7569FDB324C6DF7D00E69A0A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7569FDB624C722EA00E69A0A /* OrderedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedViewController.swift; sourceTree = "<group>"; };
 		7569FDB824C74BBB00E69A0A /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
@@ -103,6 +104,7 @@
 		75836C8E24C2C7F200E06CC8 /* Food2Home */ = {
 			isa = PBXGroup;
 			children = (
+				7545D55624C83A2F00B4E398 /* Food2Home.entitlements */,
 				7569FDB324C6DF7D00E69A0A /* GoogleService-Info.plist */,
 				75836C8F24C2C7F200E06CC8 /* AppDelegate.swift */,
 				75836C9124C2C7F200E06CC8 /* SceneDelegate.swift */,
@@ -495,6 +497,8 @@
 			baseConfigurationReference = B93FFFEA5593012CC2F47236 /* Pods-Food2Home.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Food2Home/Food2Home.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 67S63D996V;
 				INFOPLIST_FILE = "Food2Home/Supporting files/Info.plist";
@@ -505,6 +509,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.surote.Food2Home;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -515,6 +520,8 @@
 			baseConfigurationReference = 4863B1914C73FAD646154D9C /* Pods-Food2Home.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Food2Home/Food2Home.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 67S63D996V;
 				INFOPLIST_FILE = "Food2Home/Supporting files/Info.plist";
@@ -525,6 +532,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.surote.Food2Home;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

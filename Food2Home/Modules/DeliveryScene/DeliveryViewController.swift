@@ -9,7 +9,6 @@
 import UIKit
 import GoogleMaps
 import GooglePlaces
-import SwiftyJSON
 
 protocol DeliveryPresenterOutput: class {
     func updateDeliveryCost(cost:Double)

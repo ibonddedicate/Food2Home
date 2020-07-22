@@ -12,5 +12,6 @@ target 'Food2Home' do
   pod 'SwiftyJSON'
   pod 'Firebase'
   pod 'ViewAnimator'
+  pod 'Firebase/Messaging'
   
 end
