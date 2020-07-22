@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		752F35B524C7D686003983D4 /* OrderedInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752F35B424C7D686003983D4 /* OrderedInteractor.swift */; };
+		752F35B724C7D693003983D4 /* OrderedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752F35B624C7D693003983D4 /* OrderedPresenter.swift */; };
+		7569FDB424C6DF7D00E69A0A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7569FDB324C6DF7D00E69A0A /* GoogleService-Info.plist */; };
+		7569FDB724C722EA00E69A0A /* OrderedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7569FDB624C722EA00E69A0A /* OrderedViewController.swift */; };
+		7569FDB924C74BBB00E69A0A /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7569FDB824C74BBB00E69A0A /* Utilities.swift */; };
 		75836C9024C2C7F200E06CC8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836C8F24C2C7F200E06CC8 /* AppDelegate.swift */; };
 		75836C9224C2C7F200E06CC8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836C9124C2C7F200E06CC8 /* SceneDelegate.swift */; };
 		75836C9424C2C7F200E06CC8 /* FoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836C9324C2C7F200E06CC8 /* FoodViewController.swift */; };
@@ -22,13 +27,17 @@
 		75836CBD24C468A500E06CC8 /* DeliveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836CBC24C468A500E06CC8 /* DeliveryViewController.swift */; };
 		75836CBF24C468D300E06CC8 /* DeliveryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836CBE24C468D300E06CC8 /* DeliveryInteractor.swift */; };
 		75836CC124C468E100E06CC8 /* DeliveryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836CC024C468E100E06CC8 /* DeliveryPresenter.swift */; };
-		75836CC324C468ED00E06CC8 /* DeliveryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836CC224C468ED00E06CC8 /* DeliveryModel.swift */; };
 		E383958D9D761F19C76066B2 /* Pods_Food2Home.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 145D7E72F4D9F87B8587D2BF /* Pods_Food2Home.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		145D7E72F4D9F87B8587D2BF /* Pods_Food2Home.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Food2Home.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4863B1914C73FAD646154D9C /* Pods-Food2Home.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Food2Home.release.xcconfig"; path = "Target Support Files/Pods-Food2Home/Pods-Food2Home.release.xcconfig"; sourceTree = "<group>"; };
+		752F35B424C7D686003983D4 /* OrderedInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedInteractor.swift; sourceTree = "<group>"; };
+		752F35B624C7D693003983D4 /* OrderedPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedPresenter.swift; sourceTree = "<group>"; };
+		7569FDB324C6DF7D00E69A0A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7569FDB624C722EA00E69A0A /* OrderedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedViewController.swift; sourceTree = "<group>"; };
+		7569FDB824C74BBB00E69A0A /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		75836C8C24C2C7F200E06CC8 /* Food2Home.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Food2Home.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75836C8F24C2C7F200E06CC8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75836C9124C2C7F200E06CC8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -46,7 +55,6 @@
 		75836CBC24C468A500E06CC8 /* DeliveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryViewController.swift; sourceTree = "<group>"; };
 		75836CBE24C468D300E06CC8 /* DeliveryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryInteractor.swift; sourceTree = "<group>"; };
 		75836CC024C468E100E06CC8 /* DeliveryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryPresenter.swift; sourceTree = "<group>"; };
-		75836CC224C468ED00E06CC8 /* DeliveryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryModel.swift; sourceTree = "<group>"; };
 		B93FFFEA5593012CC2F47236 /* Pods-Food2Home.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Food2Home.debug.xcconfig"; path = "Target Support Files/Pods-Food2Home/Pods-Food2Home.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -62,6 +70,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7569FDB524C722C600E69A0A /* OrderedScene */ = {
+			isa = PBXGroup;
+			children = (
+				7569FDB624C722EA00E69A0A /* OrderedViewController.swift */,
+				752F35B424C7D686003983D4 /* OrderedInteractor.swift */,
+				752F35B624C7D693003983D4 /* OrderedPresenter.swift */,
+			);
+			path = OrderedScene;
+			sourceTree = "<group>";
+		};
 		75836C8324C2C7F200E06CC8 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +101,7 @@
 		75836C8E24C2C7F200E06CC8 /* Food2Home */ = {
 			isa = PBXGroup;
 			children = (
+				7569FDB324C6DF7D00E69A0A /* GoogleService-Info.plist */,
 				75836C8F24C2C7F200E06CC8 /* AppDelegate.swift */,
 				75836C9124C2C7F200E06CC8 /* SceneDelegate.swift */,
 				75836CB824C2DA8300E06CC8 /* Model */,
@@ -98,7 +117,6 @@
 			isa = PBXGroup;
 			children = (
 				75836C9824C2C7F700E06CC8 /* Assets.xcassets */,
-				75836C9A24C2C7F700E06CC8 /* LaunchScreen.storyboard */,
 				75836C9D24C2C7F700E06CC8 /* Info.plist */,
 			);
 			path = "Supporting files";
@@ -116,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				75836C9524C2C7F200E06CC8 /* Main.storyboard */,
+				75836C9A24C2C7F700E06CC8 /* LaunchScreen.storyboard */,
 				75836CB424C2CFC400E06CC8 /* FoodCollectionViewCell.swift */,
 			);
 			path = View;
@@ -124,6 +143,7 @@
 		75836CA824C2CAF600E06CC8 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				7569FDB524C722C600E69A0A /* OrderedScene */,
 				75836CBB24C4632D00E06CC8 /* DeliveryScene */,
 				75836CB324C2CC5900E06CC8 /* FoodScene */,
 			);
@@ -145,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				75836CB624C2DA5200E06CC8 /* Models.swift */,
+				7569FDB824C74BBB00E69A0A /* Utilities.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -155,7 +176,6 @@
 				75836CBC24C468A500E06CC8 /* DeliveryViewController.swift */,
 				75836CBE24C468D300E06CC8 /* DeliveryInteractor.swift */,
 				75836CC024C468E100E06CC8 /* DeliveryPresenter.swift */,
-				75836CC224C468ED00E06CC8 /* DeliveryModel.swift */,
 			);
 			path = DeliveryScene;
 			sourceTree = "<group>";
@@ -239,6 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				75836C9C24C2C7F700E06CC8 /* LaunchScreen.storyboard in Resources */,
+				7569FDB424C6DF7D00E69A0A /* GoogleService-Info.plist in Resources */,
 				75836C9924C2C7F700E06CC8 /* Assets.xcassets in Resources */,
 				75836C9724C2C7F200E06CC8 /* Main.storyboard in Resources */,
 			);
@@ -312,7 +333,10 @@
 			files = (
 				75836C9424C2C7F200E06CC8 /* FoodViewController.swift in Sources */,
 				75836C9024C2C7F200E06CC8 /* AppDelegate.swift in Sources */,
+				7569FDB924C74BBB00E69A0A /* Utilities.swift in Sources */,
 				75836CB024C2CC3800E06CC8 /* FoodModel.swift in Sources */,
+				752F35B524C7D686003983D4 /* OrderedInteractor.swift in Sources */,
+				7569FDB724C722EA00E69A0A /* OrderedViewController.swift in Sources */,
 				75836CAC24C2CB8C00E06CC8 /* FoodInteractor.swift in Sources */,
 				75836CA424C2CA7E00E06CC8 /* MapService.swift in Sources */,
 				75836CBF24C468D300E06CC8 /* DeliveryInteractor.swift in Sources */,
@@ -321,8 +345,8 @@
 				75836CC124C468E100E06CC8 /* DeliveryPresenter.swift in Sources */,
 				75836CBD24C468A500E06CC8 /* DeliveryViewController.swift in Sources */,
 				75836C9224C2C7F200E06CC8 /* SceneDelegate.swift in Sources */,
+				752F35B724C7D693003983D4 /* OrderedPresenter.swift in Sources */,
 				75836CB724C2DA5200E06CC8 /* Models.swift in Sources */,
-				75836CC324C468ED00E06CC8 /* DeliveryModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,6 +494,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 67S63D996V;
 				INFOPLIST_FILE = "Food2Home/Supporting files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -489,6 +514,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 67S63D996V;
 				INFOPLIST_FILE = "Food2Home/Supporting files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

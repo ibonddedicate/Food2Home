@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ViewAnimator
 
 protocol FoodPresenterOutput: class {
     
@@ -30,6 +31,7 @@ class FoodViewController: UIViewController {
         foodCV.delegate = self
         setup()
         interactor?.viewDidLoad()
+        //UINavigationBar.appearance().backgroundColor = Utilities().f2hRed
     }
     
     private func setup() {
@@ -40,6 +42,11 @@ class FoodViewController: UIViewController {
         interactor.presenter = presenter
         presenter.viewController = viewController
         
+    }
+    //MARK: Animation
+    override func viewDidAppear(_ animated: Bool) {
+        let animation = AnimationType.from(direction: .top, offset: 100)
+        UIView.animate(views: foodCV.visibleCells, animations: [animation], duration:  1)
     }
 
 }
@@ -74,6 +81,8 @@ extension FoodViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FoodCell", for: indexPath) as! FoodCollectionViewCell
         cell.mealName.text = foodModel.foodSet[indexPath.row].foodName
         cell.mealPhoto.image = foodModel.foodSet[indexPath.row].foodImage
+        //cell.mealPhoto.layer.cornerRadius = 15
+        cell.layer.cornerRadius = 40
         return cell
     }
     

@@ -10,5 +10,7 @@ target 'Food2Home' do
   pod 'GooglePlaces'
   pod 'Alamofire'
   pod 'SwiftyJSON'
+  pod 'Firebase'
+  pod 'ViewAnimator'
   
 end

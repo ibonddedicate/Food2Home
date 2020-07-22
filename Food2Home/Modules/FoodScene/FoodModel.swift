@@ -14,9 +14,6 @@ import CoreLocation
 
 class FoodModel {
 
-    let italianRestaurant = CLLocationCoordinate2D(latitude: 13.68512500, longitude: 100.61102060)
-    let germanRestaurant = CLLocationCoordinate2D(latitude: 13.68512500, longitude: 100.61102060)
-    let japaneseRestaurant = CLLocationCoordinate2D(latitude: 13.68512500, longitude: 100.61102060)
     
     let foodSet:[FoodModels] = [
         FoodModels(food: "Italian Meal", price: 489, image: UIImage(named: "ItalianMeal")!,loc: CLLocationCoordinate2D(latitude: 13.739576, longitude: 100.565218)),
