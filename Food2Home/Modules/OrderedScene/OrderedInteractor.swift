@@ -7,24 +7,20 @@
 //
 
 import Foundation
+import CoreLocation
 
 protocol OrderedInteractor: class {
-    func calculateDuration(duration: Float)
+    func calculateDuration(userLoc: CLLocationCoordinate2D, restLoc: CLLocationCoordinate2D)
 }
 
 class OrderedInteractorImplementation: OrderedInteractor {
     var presenter: OrderedPresenter?
     
-    func calculateDuration(duration: Float) {
-        var takeTime:String?
-        if duration < 3000 {
-            takeTime = "< 15 Minutes"
-        } else if duration > 13000 {
-            takeTime = "> 40 Minutes"
-        } else {
-            takeTime = "20 - 35 Minutes"
+    func calculateDuration(userLoc: CLLocationCoordinate2D, restLoc: CLLocationCoordinate2D) {
+        MapService().requestDuration(userLoc: userLoc, restLoc: restLoc) {
+            let time = MapService.duration
+            self.presenter?.durationCalculated(time: time)
         }
-        presenter?.durationCalculated(time: takeTime!)
     }
     
 }

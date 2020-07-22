@@ -8,6 +8,7 @@
 
 import UIKit
 import ViewAnimator
+import CoreLocation
 
 protocol OrderedPresenterOutput: class {
     func setDuration(dur: String)
@@ -21,7 +22,8 @@ class OrderedViewController: UIViewController {
     @IBOutlet weak var theChef: UIImageView!
     @IBOutlet weak var orderStatus: UILabel!
     var interactor: OrderedInteractor?
-    var locationDistance: Float?
+    var cord2DUser: CLLocationCoordinate2D?
+    var cord2DRestaurant: CLLocationCoordinate2D?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,10 +33,8 @@ class OrderedViewController: UIViewController {
         mockUpButton2.layer.cornerRadius = 10
         theChef.alpha = 0
         waitDuration.alpha = 0
-
-        
-        if locationDistance != nil {
-            interactor?.calculateDuration(duration: locationDistance!)
+        if cord2DUser != nil && cord2DRestaurant != nil {
+         interactor?.calculateDuration(userLoc: cord2DUser!, restLoc: cord2DRestaurant!)
         }
     }
     

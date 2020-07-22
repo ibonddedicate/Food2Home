@@ -252,7 +252,8 @@ extension DeliveryViewController : DeliveryPresenterOutput {
         if segue.identifier == "toOrdered" {
             if segue.destination is OrderedViewController {
                 let vc = segue.destination as? OrderedViewController
-                vc?.locationDistance = locationDistance
+                vc?.cord2DUser = cord2DUser
+                vc?.cord2DRestaurant = cord2DRestaurant
             }
         }
     }
