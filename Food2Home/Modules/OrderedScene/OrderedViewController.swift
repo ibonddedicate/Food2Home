@@ -31,6 +31,7 @@ class OrderedViewController: UIViewController {
         mockUpButton2.layer.cornerRadius = 10
         theChef.alpha = 0
         waitDuration.alpha = 0
+
         
         if locationDistance != nil {
             interactor?.calculateDuration(duration: locationDistance!)
@@ -39,7 +40,7 @@ class OrderedViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         theChef.animate(animations: [AnimationType.from(direction: .right, offset: 100.00)], duration: 2.5, options: [.repeat, .autoreverse])
-        waitDuration.animate(animations: [AnimationType.from(direction: .left, offset: 100.00)], delay: 1.5, duration: 2.5)
+        waitDuration.animate(animations: [AnimationType.from(direction: .left, offset: 100.00)], delay: 3, duration: 3)
         orderStatus.text = ""
         var charIndex = 0.0
         let statusText = "The chef is about to 🍳 your order.."

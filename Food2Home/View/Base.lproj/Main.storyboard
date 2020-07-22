@@ -315,7 +315,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7ud-63-PvU">
                                                 <rect key="frame" x="15" y="15" width="345" height="332"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order sent to Restaurant" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gik-aO-ASg">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order sent to restaurant" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gik-aO-ASg">
                                                         <rect key="frame" x="0.0" y="0.0" width="345" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="tDi-vV-xJI"/>
@@ -348,7 +348,7 @@
                                                             <constraint firstAttribute="height" constant="20" id="KjU-ak-xhZ"/>
                                                         </constraints>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your order will be delivered  in :" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fmK-eN-YcY">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Food will be delivered  in :" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fmK-eN-YcY">
                                                         <rect key="frame" x="0.0" y="100" width="345" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="A8b-wx-zRX"/>
@@ -357,12 +357,12 @@
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 - 15 Minutes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LTT-7N-vWE">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calculating.." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LTT-7N-vWE">
                                                         <rect key="frame" x="0.0" y="130" width="345" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="pHi-Mu-KEp"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -478,6 +478,6 @@
     </scenes>
     <resources>
         <image name="chef" width="332" height="412.33334350585938"/>
-        <image name="kitchen" width="1000" height="519"/>
+        <image name="kitchen" width="333.33334350585938" height="173"/>
     </resources>
 </document>
