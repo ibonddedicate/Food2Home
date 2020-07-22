@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		752F35B524C7D686003983D4 /* OrderedInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752F35B424C7D686003983D4 /* OrderedInteractor.swift */; };
 		752F35B724C7D693003983D4 /* OrderedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752F35B624C7D693003983D4 /* OrderedPresenter.swift */; };
+		752F35B924C7ED9F003983D4 /* OrderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752F35B824C7ED9F003983D4 /* OrderService.swift */; };
 		7569FDB424C6DF7D00E69A0A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7569FDB324C6DF7D00E69A0A /* GoogleService-Info.plist */; };
 		7569FDB724C722EA00E69A0A /* OrderedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7569FDB624C722EA00E69A0A /* OrderedViewController.swift */; };
 		7569FDB924C74BBB00E69A0A /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7569FDB824C74BBB00E69A0A /* Utilities.swift */; };
@@ -35,6 +36,7 @@
 		4863B1914C73FAD646154D9C /* Pods-Food2Home.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Food2Home.release.xcconfig"; path = "Target Support Files/Pods-Food2Home/Pods-Food2Home.release.xcconfig"; sourceTree = "<group>"; };
 		752F35B424C7D686003983D4 /* OrderedInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedInteractor.swift; sourceTree = "<group>"; };
 		752F35B624C7D693003983D4 /* OrderedPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedPresenter.swift; sourceTree = "<group>"; };
+		752F35B824C7ED9F003983D4 /* OrderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderService.swift; sourceTree = "<group>"; };
 		7569FDB324C6DF7D00E69A0A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7569FDB624C722EA00E69A0A /* OrderedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedViewController.swift; sourceTree = "<group>"; };
 		7569FDB824C74BBB00E69A0A /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				75836CA324C2CA7E00E06CC8 /* MapService.swift */,
+				752F35B824C7ED9F003983D4 /* OrderService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				75836C9024C2C7F200E06CC8 /* AppDelegate.swift in Sources */,
 				7569FDB924C74BBB00E69A0A /* Utilities.swift in Sources */,
 				75836CB024C2CC3800E06CC8 /* FoodModel.swift in Sources */,
+				752F35B924C7ED9F003983D4 /* OrderService.swift in Sources */,
 				752F35B524C7D686003983D4 /* OrderedInteractor.swift in Sources */,
 				7569FDB724C722EA00E69A0A /* OrderedViewController.swift in Sources */,
 				75836CAC24C2CB8C00E06CC8 /* FoodInteractor.swift in Sources */,

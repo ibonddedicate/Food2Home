@@ -26,6 +26,7 @@ class DeliveryViewController: UIViewController {
     @IBOutlet weak var totalPrice: UILabel!
     var cord2DRestaurant = CLLocationCoordinate2D(latitude: 13.685125, longitude: 100.611021)
     var cordRestaurant = CLLocation(latitude: 13.685125, longitude: 100.611021)
+    var cord2DUser = CLLocationCoordinate2D(latitude: 13.685125, longitude: 100.611021)
     var interactor : DeliveryInteractor?
     var locationManager: CLLocationManager!
     var currentLocation: CLLocation?
@@ -34,10 +35,12 @@ class DeliveryViewController: UIViewController {
     var pickedFood = FoodModel.init().foodSet[0]
     var distanceCost:String?
     let mapService = MapService()
+    let orderService = OrderService()
     let marker = GMSMarker()
     var ableToOrder = false
     var path = GMSPath()
     var locationDistance: Float?
+    var total:Double?
 
     
     override func viewDidLoad() {
@@ -112,13 +115,13 @@ extension DeliveryViewController : GMSAutocompleteViewControllerDelegate, GMSMap
         self.mapView.clear()
         self.locationBox.text = place.name
         
-        let cord2D = CLLocationCoordinate2D(latitude: (place.coordinate.latitude), longitude: (place.coordinate.longitude))
+        cord2DUser = CLLocationCoordinate2D(latitude: (place.coordinate.latitude), longitude: (place.coordinate.longitude))
         let cordUser = CLLocation(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
-        let bounds = GMSCoordinateBounds(coordinate: cord2D, coordinate: cord2DRestaurant)
+        let bounds = GMSCoordinateBounds(coordinate: cord2DUser, coordinate: cord2DRestaurant)
         let camera: GMSCameraUpdate = GMSCameraUpdate.fit(bounds, withPadding: 70.0)
         self.mapView.animate(with: camera)
         let distance = cordUser.distance(from: cordRestaurant)
-        mapService.requestPath(userLoc: cord2D, restLoc: cord2DRestaurant){
+        mapService.requestPath(userLoc: cord2DUser, restLoc: cord2DRestaurant){
             let routes = MapService.routes
             if routes != nil {
                 for route in routes! {
@@ -135,7 +138,7 @@ extension DeliveryViewController : GMSAutocompleteViewControllerDelegate, GMSMap
         interactor?.calculateDeliveryCost(dist: Float(distance))
         locationDistance = Float(distance)
 
-        createMarker(titleMarker: place.name!, loc: cord2D)
+        createMarker(titleMarker: place.name!, loc: cord2DUser)
         createRestaurantMarker(loc: cord2DRestaurant)
 //
     }
@@ -144,7 +147,7 @@ extension DeliveryViewController : GMSAutocompleteViewControllerDelegate, GMSMap
     func mapView(_ mapView: GMSMapView, didEndDragging marker: GMSMarker) {
         print("Position of marker is = \(marker.position.latitude),\(marker.position.longitude)")
         self.mapView.clear()
-        let cord2DUser = CLLocationCoordinate2D(latitude: marker.position.latitude, longitude: marker.position.longitude)
+        cord2DUser = CLLocationCoordinate2D(latitude: marker.position.latitude, longitude: marker.position.longitude)
         let bounds = GMSCoordinateBounds(coordinate: cord2DUser, coordinate: cord2DRestaurant)
         let camera: GMSCameraUpdate = GMSCameraUpdate.fit(bounds, withPadding: 70.0)
         self.mapView.animate(with: camera)
@@ -235,14 +238,15 @@ extension DeliveryViewController : DeliveryPresenterOutput {
                 self.ableToOrder = true
                 self.confirmOrder.isEnabled = true
                 let distanceCostnonOp = Double(self.distanceCost!)!
-                let total = distanceCostnonOp + Double(self.pickedFood.foodPrice)
-                self.totalPrice.text = "\(total.rounded()) THB"
+                self.total = distanceCostnonOp + Double(self.pickedFood.foodPrice)
+                self.totalPrice.text = "\(self.total!.rounded()) THB"
             }
         }
         
     }
     func confirmPressed() {
         performSegue(withIdentifier: "toOrdered", sender: self)
+        orderService.postOrder(menu: pickedFood, totalPrice: total!, deliver: cord2DUser)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
